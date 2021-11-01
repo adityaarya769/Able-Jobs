@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Able Jobs</title>
+        <link rel="stylesheet" href="{% static 'register.css' %}">
+    </head>
+
+    <body>
+        <div class="login-page">
+        <div class="form" >
+        
+        <h1> Able Jobs </h1>
+        <br>
+        <form class="register-form" action="register" method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Enter your user name" required>
+        <input type="password" name="password" placeholder="Enter your password" pattern="[a-zA-z0-9_]{8, 15}" required>
+        <input type="email" name="email" placeholder="Enter your email id" required>
+        <button type="submit"> Register </button>
+        <p class="message">Already registered? <a href="/login"> Login </a></p>
+        </form>
+        <div>
+        {% for message in messages %}
+        <p style="color: #4caf50; font-size:14px;"> {{message}} </p>
+        {% endfor %}
+        </div>
+        </div>
+        </div>
+        
+        
+    </body>
+</html>

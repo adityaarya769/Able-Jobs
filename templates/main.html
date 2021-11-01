@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Able Jobs</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="E-Challan System">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'main.css' %}" />
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="logo">
+                <div class="content-wrap">  
+                    <h1> Able Jobs </h1>
+                </div>
+            </div>
+            <div class="nav1">
+                <ul>
+                    <li><a href="/home"> &nbsp Home &nbsp </a></li>
+                    <li><a href="/main"> &nbsp Post a job &nbsp </a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="/logout"> &nbsp logout &nbsp </a></li>
+                    {% else %}
+                    <li><a href="/login"> &nbsp Login &nbsp </a></li>
+                    {% endif %}
+
+                </ul>
+            </div>
+        </div>
+
+        <div class = "empty">
+        
+        </div>
+        
+
+        <div class="form"> 
+        <form class="job-form" action="Job" method="post">
+        {% csrf_token %}
+        Job Role*<br>
+        <select class="jobRole">
+            <option value="Business Development Executive">Business Development Executive</option>
+            <option value="Customer Support Voice">Customer Support Voice</option>
+            <option value="Customer Non-voice">Customer Non-voice</option>
+            <option value="Inside Sales">Inside Sales</option>
+            <option value="Field Sales">Field Sales</option>
+            <option value="Content Writing">Content Writing</option>
+            <option value="Digital Marketing">Digital Marketing</option>
+            <option value="Community Management">Community Management</option>
+        </select>
+        <br><br>
+        Job Description* <br><textarea class="jobDescription" rows="5" col="20" required> The role would be a full time " " role where the said person would be able to work on some of the most exciting full stack technical projects, solve real world problems and see how their work is making a difference
+        </textarea>
+        <p style="font-family: Calibri;">We will populate a standard job description that you can edit</p><br>
+        Place of work* (address) <br><textarea name="placeOfWork" rows="5" col="20" required></textarea><br><br>
+        Phone no for coordination <br><input type="" name="phoneNo" pattern="[789][0-9]{9}">
+        <p style="font-family: Calibri;">Your phone no is extremely safe with us. It is shared with only one person on the team</p>
+        <br>
+        <button type="submit"> Submit </button>
+        </form>
+        <br>
+        {% for message in messages %}
+        <p style="color: aliceblue; font-size:14px;"> {{message}} </p>
+        {% endfor %}
+        </div>
+
+
+    
+    </body>
+
+</html>

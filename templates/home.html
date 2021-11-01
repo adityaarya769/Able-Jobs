@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Able Jobs</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="E-Challan System">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'home.css' %}" />
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="logo">
+                <div class="content-wrap">  
+                    <h1> Able Jobs </h1>
+                </div>
+            </div>
+            <div class="nav1">
+                <ul>
+                    <li><a href="/home"> &nbsp Home &nbsp </a></li>
+                    <li><a href="/main"> &nbsp Post a job &nbsp </a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="/logout"> &nbsp logout &nbsp </a></li>
+                    {% else %}
+                    <li><a href="/login"> &nbsp Login &nbsp </a></li>
+                    {% endif %}
+
+                </ul>
+            </div>
+        </div>
+
+        <div class = "empty">
+        
+        </div>
+        <div class = "empty">
+        
+        </div>
+        <div class="container">
+        <h2 style="font-family:Times New Roman; font-size:40px; font-weight: bold; text-align: center;"> Wanna Hire Faster &nbsp &nbsp &nbsp Wanna Hire Better </h2>
+        <br>
+        <p style="font-family:Times New Roman; font-size:18px; text-align: center;"> Post a job and get high quality candidates as per your job requirements within 5 days</p>
+        <br><br>
+        <br><br>
+
+        <button><a href="/main"> Post New Job </a> </button>
+        </div>
+        
